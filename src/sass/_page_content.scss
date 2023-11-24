@@ -1,0 +1,23 @@
+.page_content {
+  height: 100vh;
+  width: 100vw;
+  background: $content-bg;
+  @include flexCenter;
+  flex-direction: column;
+  text-align: center;
+  button {
+    display: block;
+  }
+}
+
+@include mq(900px) {
+  .page_content {
+    height: 60%;
+    min-height: 350px;
+    width: 30%;
+    min-width: 300px;
+    border-radius: 40px;
+    box-shadow: $shadow;
+    padding: 2%;
+  }
+}

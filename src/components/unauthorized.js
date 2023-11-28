@@ -8,7 +8,7 @@ const Unauthorized = () => {
 
   return (
     <section className="page_content">
-      <p>You are not authorized to see the site</p>
+      <p>You are not authorized to see this page</p>
       <button onClick={goBack}>Home</button>
     </section>
   );

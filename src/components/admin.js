@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoutContext from "../context/LogoutContext";
+import Users from "./Users";
 
 const Admin = () => {
   const { logout } = useContext(LogoutContext);
@@ -10,6 +11,8 @@ const Admin = () => {
   return (
     <section className="page_content">
       <h3>You have made it to the admin page!</h3>
+      <p>Users List</p>
+      <Users />
       <button onClick={() => navigate("/dashboard")}>Go Back</button>
       <button onClick={() => navigate("/visitor")}>View visitor Page</button>
       <button className="logout_button" onClick={logout}>

@@ -6,6 +6,7 @@ const GET_USER_URL = "/user";
 
 const Users = () => {
   const [users, setUsers] = useState({});
+  const [errMsg, setErrMsg] = useState();
 
   const { auth } = useAuth();
   const token = auth.accessToken;
@@ -21,7 +22,7 @@ const Users = () => {
         setUsers(response.data);
       } catch (err) {
         if (!err?.response) {
-          console.log("No Server Response");
+          setErrMsg("No response from database");
         }
       }
     };
@@ -36,7 +37,7 @@ const Users = () => {
           ))}
         </ul>
       ) : (
-        <p>No users to display</p>
+        <p>{errMsg}</p>
       )}
     </>
   );

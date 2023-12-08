@@ -13,8 +13,6 @@ export const LogoutProvider = ({ children }) => {
   const logout = async () => {
     try {
       const response = await axios.post(LOGOUT_URL);
-      console.log(JSON.stringify(response?.data));
-      console.log(JSON.stringify(response));
     } catch (err) {
       if (!err?.response) {
         console.log("No Server Response");

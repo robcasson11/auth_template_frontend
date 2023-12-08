@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "";
+const BASE_URL = "https://auth-template-qr4k.onrender.com";
 
 export default axios.create({
   baseURL: BASE_URL,

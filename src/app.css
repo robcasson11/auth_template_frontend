@@ -27,6 +27,12 @@ body {
   color: #eee;
 }
 
+p {
+  margin: 4%;
+  text-align: center;
+  color: rgb(226, 240, 103);
+}
+
 .App {
   display: flex;
   justify-content: center;

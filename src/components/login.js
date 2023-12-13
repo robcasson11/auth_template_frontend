@@ -45,7 +45,7 @@ const Login = () => {
       navigate("/dashboard");
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("No Server Response");
+        setErrMsg("Slow Server Response, please reload the page and try again");
       } else if (err.response?.status === 400) {
         setErrMsg("Missing Username or Password");
       } else if (err.response?.status === 401) {
@@ -87,7 +87,7 @@ const Login = () => {
           value={pwd}
           required
         />
-        <button>Sign In</button>
+        <button type="submit">Sign In</button>
       </form>
     </section>
   );

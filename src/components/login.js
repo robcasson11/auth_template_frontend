@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import axios from "../api/axios";
 const LOGIN_URL = "/auth";
@@ -16,6 +17,7 @@ const Login = () => {
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -27,6 +29,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -44,6 +47,7 @@ const Login = () => {
       setPwd("");
       navigate("/dashboard");
     } catch (err) {
+      setLoading(false);
       if (!err?.response) {
         setErrMsg("Slow Server Response, please reload the page and try again");
       } else if (err.response?.status === 400) {
@@ -87,7 +91,18 @@ const Login = () => {
           value={pwd}
           required
         />
-        <button type="submit">Sign In</button>
+        <button type="submit">
+          {loading ? (
+            <ClipLoader
+              color="rgba(184, 1, 255, 1)"
+              loading={loading}
+              size={"0.4rem"}
+              aria-label="Loading Spinner"
+            />
+          ) : (
+            "Sign In"
+          )}
+        </button>
       </form>
     </section>
   );

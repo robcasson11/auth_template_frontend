@@ -30,6 +30,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setTimeout(() => {
+      setErrMsg("Slow server response. Please wait or refresh the page.");
+    }, 5000);
 
     try {
       const response = await axios.post(
@@ -47,9 +50,8 @@ const Login = () => {
       setPwd("");
       navigate("/dashboard");
     } catch (err) {
-      setLoading(false);
       if (!err?.response) {
-        setErrMsg("Slow Server Response, please reload the page and try again");
+        setErrMsg("No server response");
       } else if (err.response?.status === 400) {
         setErrMsg("Missing Username or Password");
       } else if (err.response?.status === 401) {
